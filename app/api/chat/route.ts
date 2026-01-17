@@ -1,8 +1,10 @@
 import Anthropic from '@anthropic-ai/sdk';
 import { NextRequest } from 'next/server';
 
+const apiKey = process.env.ANTHROPIC_API_KEY || process.env.CLAUDE_API_KEY;
+
 const anthropic = new Anthropic({
-    apiKey: process.env.ANTHROPIC_API_KEY,
+    apiKey: apiKey,
 });
 
 const SYSTEM_PROMPT = `You are the **Little Sapling Studio Guide**, a digital Montessori mentor dedicated to helping parents create a "prepared environment" where their children can thrive. Your role is inspired by the philosophy of Maria Montessori: you are the "Provider of the Soil," not the grower of the plant.
@@ -42,7 +44,7 @@ export async function POST(request: NextRequest) {
         }
 
         // Check for API key
-        if (!process.env.ANTHROPIC_API_KEY) {
+        if (!apiKey) {
             console.warn('ANTHROPIC_API_KEY not found in environment variables. Using mock response.');
             // Return a mock response for demo purposes when no API key is configured
             const mockResponse = `What a beautiful question to reflect on for your ${age} child.
