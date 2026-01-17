@@ -43,6 +43,7 @@ export async function POST(request: NextRequest) {
 
         // Check for API key
         if (!process.env.ANTHROPIC_API_KEY) {
+            console.warn('ANTHROPIC_API_KEY not found in environment variables. Using mock response.');
             // Return a mock response for demo purposes when no API key is configured
             const mockResponse = `What a beautiful question to reflect on for your ${age} child.
 
