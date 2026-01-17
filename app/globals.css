@@ -1,0 +1,130 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-sand-100 text-forest-800 antialiased;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif;
+  }
+  
+  p, span, div, input, textarea, button {
+    @apply font-sans;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-sage-400 text-white px-6 py-3 rounded-full font-medium
+           transition-all duration-300 ease-out
+           hover:bg-sage-500 hover:shadow-lg hover:shadow-sage-400/25
+           active:scale-[0.98]
+           focus:outline-none focus:ring-2 focus:ring-sage-400 focus:ring-offset-2;
+  }
+  
+  .btn-secondary {
+    @apply bg-transparent border-2 border-sage-400 text-sage-500 px-6 py-3 rounded-full font-medium
+           transition-all duration-300 ease-out
+           hover:bg-sage-400 hover:text-white
+           active:scale-[0.98]
+           focus:outline-none focus:ring-2 focus:ring-sage-400 focus:ring-offset-2;
+  }
+  
+  .btn-terracotta {
+    @apply bg-terracotta-400 text-white px-6 py-3 rounded-full font-medium
+           transition-all duration-300 ease-out
+           hover:bg-terracotta-500 hover:shadow-lg hover:shadow-terracotta-400/25
+           active:scale-[0.98]
+           focus:outline-none focus:ring-2 focus:ring-terracotta-400 focus:ring-offset-2;
+  }
+  
+  .input-field {
+    @apply w-full px-4 py-3 rounded-xl border-2 border-sand-200 bg-white
+           text-forest-800 placeholder-forest-400/50
+           transition-all duration-200
+           focus:border-sage-400 focus:ring-2 focus:ring-sage-400/20 focus:outline-none;
+  }
+  
+  .card {
+    @apply bg-white rounded-2xl shadow-lg shadow-forest-800/5 p-6
+           border border-sand-200/50;
+  }
+  
+  .card-elevated {
+    @apply bg-white rounded-2xl shadow-xl shadow-forest-800/10 p-8
+           border border-sand-200/50
+           backdrop-blur-sm;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .gradient-sage {
+    @apply bg-gradient-to-br from-sage-400 to-sage-500;
+  }
+  
+  .gradient-forest {
+    @apply bg-gradient-to-br from-forest-700 to-forest-800;
+  }
+  
+  .gradient-warm {
+    @apply bg-gradient-to-br from-terracotta-400 to-terracotta-500;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-sand-200;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-sage-400/50 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-sage-400;
+}
+
+/* Sapling animation keyframes */
+@keyframes leaf-sway {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+}
+
+@keyframes stem-grow {
+  0% { height: 0; opacity: 0; }
+  100% { height: 100%; opacity: 1; }
+}
+
+@keyframes leaf-appear {
+  0% { transform: scale(0) rotate(-10deg); opacity: 0; }
+  70% { transform: scale(1.1) rotate(2deg); }
+  100% { transform: scale(1) rotate(0); opacity: 1; }
+}
+
+.leaf-animate {
+  animation: leaf-sway 2s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+
+.stem-animate {
+  animation: stem-grow 1s ease-out forwards;
+}
+
+.leaf-pop {
+  animation: leaf-appear 0.6s ease-out forwards;
+}
